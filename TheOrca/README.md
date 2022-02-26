@@ -1,9 +1,6 @@
 # TheOrca
-姜大佬几吊滴
+软件工程课程设计：图片分享网站
 
-# 使用
-
-目前还只有注册登录。。。
 
 ## 1. git pull origin master
 
