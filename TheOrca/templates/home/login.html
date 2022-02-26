@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}登录{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        #container {
+            padding-top: 200px;
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+    <div id="container">
+        <hr>
+        <hr>
+        <h1>用户登录</h1>
+        {% with message = message %}
+            <p>{{ message }}</p>
+        {% endwith %}
+        <form class="form-horizontal" method="post" action="{{ url_for('home.login') }}">
+            <div class="form-group">
+                <label for="inputUsername" class="col-sm-2 control-label">用户名或邮箱</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="inputUsername" placeholder="用户名或邮箱"
+                           name="name_or_email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-7">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="密码" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="identity" class="col-sm-2 control-label">身份</label>
+                <div class="col-sm-7">
+                    <input type="radio" name="is_censor" id="identity0" value="0" checked="checked">我是用户
+                    <input type="radio" name="is_censor" id="identity1" value="1">我是审查员
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

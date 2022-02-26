@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block head %}
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width">
+        <script data-ad-client="ca-pub-4158482577294135" async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/main.css">
+        <script src="http://imgoss.cnu.cc/assets/scripts/lib/respond.min.js"></script>
+        <script src="http://imgoss.cnu.cc/assets/scripts/lib/html5shiv.min.js"></script>
+        <script>
+
+            Config = {
+                'cdnDomain': 'http://imgoss.cnu.cc',
+                'user_id': 0,
+                'routes': {},
+                'token': 'lLmzRLPmObf03doKdGjPya1shxYIyMcFo6zWD2dy'
+            };
+        </script>
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?debc91213222aae0abfdb6176ec8d28a";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        <style>
+            .weiboLink {
+                display: block;
+                float: left;
+                width: 32px;
+                height: 32px;
+                background: url('http://imgoss.cnu.cc/assets/images/icon.png') 0 32px;
+                background-size: 128px auto;
+                margin: 5px;
+                position: relative;
+                top: -12px;
+                left: 4px;
+            }
+
+            .weiboLink.mobile {
+                position: absolute;
+                left: 80px;
+                top: 22px;
+            }
+
+            .button_check {
+                background-color: #008CBA;
+                border-radius: 8px;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+        </style>
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/work_show.css">
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/image_show.css">
+        <link rel="stylesheet" type="text/css" href="http://imgoss.cnu.cc/assets/editor/jquery.tagsinput.min.css"/>
+
+    </head>
+{% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron pc">
+        <div class="shadow">
+
+        </div>
+
+        <img src="{{ photos_addrs[0] }}"/>
+
+        <div class="container">
+            <h2 class="work-title">{{ works_title }}</h2>
+            <span class="author-info">
+                作者：
+                <strong> {{ editor_name }}</strong>
+                <span class="timeago" data-toggle="tooltip" data-placement="bottom"
+                      title="2020-12-23 17:23:35"> {{ post_time }}</span>
+            </span>
+            <div class="category">
+                {{ works_description }}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="article-container">
+        <div class="article-body container">
+
+            <div id="work_body" class="pc">
+                <div class="thumbnail">
+                    {% for photo_addr in photos_addrs %}
+                        <img class="bodyImg lazy" imgindex="0" src="{{ photo_addr }}" width="1144" height="768">
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <form class="form-horizontal" method="post" action="{{ url_for('censors.check_check') }}">
+        <div class="form-group">
+            <label for="censor" class="col-sm-2 control-label">审核</label>
+            <div class="col-sm-7">
+                <input type="radio" name="checked" id="censor_y" value="1_{{ works_id }}">通过
+                <input type="radio" name="checked" id="censor_n" value="-1_{{ works_id }}">不通过
+            </div>
+        </div>
+        <p></p>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" onclick="post_()">提交</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

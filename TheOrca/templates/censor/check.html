@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block head %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script data-ad-client="ca-pub-4158482577294135" async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/main.css">
+        <script src="http://imgoss.cnu.cc/assets/scripts/lib/respond.min.js"></script>
+        <script src="http://imgoss.cnu.cc/assets/scripts/lib/html5shiv.min.js"></script>
+        <script>
+
+            Config = {
+                'cdnDomain': 'http://imgoss.cnu.cc',
+                'user_id': 1014245,
+                'routes': {},
+                'token': '8r60GFgSKWaCf1garoMiDPVZACD46s325D3hYnuU'
+            };
+        </script>
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?debc91213222aae0abfdb6176ec8d28a";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/selected.css">
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/public.css">
+        <style>
+            .authorInfo .author {
+                display: block;
+                overflow: hidden;
+                height: 40px;
+            }
+        </style>
+
+        <style>
+            .carousel {
+                width: 1200px;
+                height: 400px;
+            }
+
+            img {
+                width: 1200px;
+                height: 400px;
+            }
+
+        </style>
+
+        <style type="text">
+            .ttpp {
+                font-size: 40px;
+            }
+        </style>
+
+        <script src="jquery.js"></script>
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        <script>
+            $('.carousel').carousel({
+                interval: 2000
+            })
+        </script>
+
+    </head>
+
+{% endblock %}
+
+{% block content %}
+
+    <hr>
+
+    <div class="rows container pc">
+        <div class="col-lg-8 col-md-8 col-xs-12">
+            <h2 class="ulTitle">待审核</h2>
+            <ul class="selectedUL pc" id="selected">
+                {% for works in unchecked_works_list %}
+                    <hr>
+
+                    <div class="thumbnail">
+                        <a href="/censors/works_check/{{ works.id }}">
+                            <img src="{{ works_coverage_dict[works.id] }}" alt="hhh">
+                            <h3 class="workTitle">{{ works.title }}</h3>
+                        </a>
+                        <div class="caption">
+                            <p>作者：{{ works_editor_dict[works.id].username }}</p>
+                        </div>
+                        <div class="workBody"><p> {{ works.description }} <br/></p></div>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}
+    <p>虎鲸摄影</p>
+{% endblock %}

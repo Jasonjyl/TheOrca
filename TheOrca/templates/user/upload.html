@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}投稿{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        #container {
+            padding-top: 200px;
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+    <div id="container">
+        <hr>
+        <hr>
+        <h1>投稿</h1>
+        <form class="form-horizontal" method="post" action="{{ url_for('users.upload') }}"
+              enctype="multipart/form-data">
+            <div class="form-group">
+                {#                <label for="title">标题</label>#}
+                {#                <textarea class="form-control" rows="1" id="title"></textarea>#}
+                <label for="email" class="col-sm-2 control-label">标题</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="title" placeholder="标题" , name="title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="introduce" class="col-sm-2 control-label">简介</label>
+                <div class="col-sm-7">
+                    <textarea class="form-control" rows="5" id="introduce" , name="description"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="text" class="col-sm-2 control-label">配文</label>
+                <div class="col-sm-7">
+                    <textarea class="form-control" rows="5" id="text" , name="text"></textarea>
+                </div>
+            </div>
+            <p></p>
+            {# 这里是原来的 #}
+            {#            <div class="custom-file mb-3">#}
+            {#                <label class="custom-file-label" for="customFile">选择文件</label>#}
+            {#                <input type="file" enctype=multipart/form-data multiple="multiple" class="custom-file-input"#}
+            {#                       id="customFile" name="filename">#}
+            {#            </div>#}
+            {# 上面的是原来的 #}
+            <div class="form-group">
+                <label for="text" class="col-sm-2 control-label">配图</label>
+                <div class="col-sm-7">
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" name="files" multiple>
+                        <p></p>
+                        <button type="submit" class="btn btn-primary">上传</button>
+                    </form>
+                </div>
+            </div>
+            {#            <form action="/upload" method="POST" enctype="multipart/form-data">#}
+            {#                <input type="file" name="files" multiple="multiple" >#}
+            {#                <input type="submit" value="add">#}
+            {#            </form>#}
+
+
+            <!--            <input type="file" id="myFile" name="filename2">-->
+
+            {#            <div class="mt-3">#}
+            {#                <button type="submit" >提交</button>#}
+            {#            </div>#}
+        </form>
+    </div>
+{% endblock %}
+
+
+
+{% block scripts %}
+    {#  动态检测用户名，密码长度，以及查重  #}
+{% endblock %}

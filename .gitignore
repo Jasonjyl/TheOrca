@@ -1,0 +1,24 @@
+
+# .DS_Store
+.DS_Store
+
+# venv package
+TheOrca/venv/
+
+# .idea package
+TheOrca/.idea/
+
+# __pycache__ package
+TheOrca/__pycache__/
+
+# config
+TheOrca/config.py
+
+# migrations from python3 app.py db init
+TheOrca/migrations/
+
+# __pycache__ package
+__pycache__/
+
+# photos/
+photos/

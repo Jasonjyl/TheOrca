@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}注册{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        #container {
+            padding-top: 200px;
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+    <div id="container">
+        <hr>
+        <hr>
+        <h1>用户注册</h1>
+        <form class="form-horizontal" method="post" action="{{ url_for('home.register') }}">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">邮箱地址</label>
+                <div class="col-sm-7">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="邮箱地址" name="emailaddr">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputUsername" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="inputUsername" placeholder="用户名(长度在2~12位之间，请使用合法字符)"
+                           name="username">
+                    <span></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-7">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="密码(长度在8~20位之间)"
+                           name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputRepassword3" class="col-sm-2 control-label">确认密码</label>
+                <div class="col-sm-7">
+                    <input type="password" class="form-control" id="inputRepassword3" placeholder="确认密码"
+                           name="repassword">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">注册</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {#  动态检测用户名，密码长度，以及查重  #}
+{% endblock %}

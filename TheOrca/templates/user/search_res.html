@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block head %}
+  <head>
+    <meta charset="utf-8">
+    <title>            搜索
+    </title>
+
+    <meta name="viewport" content="width=device-width">
+    <script data-ad-client="ca-pub-4158482577294135" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+      <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/main.css">
+      <!--[if lt IE 9]>
+{#      <!--#}
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+      -->
+      <script src="http://imgoss.cnu.cc/assets/scripts/lib/respond.min.js"></script>
+      <script src="http://imgoss.cnu.cc/assets/scripts/lib/html5shiv.min.js"></script>
+      <![endif]-->
+    <script>
+
+        Config = {
+            'cdnDomain': 'http://imgoss.cnu.cc',
+            'user_id': 1014245,
+            'routes': {
+            },
+            'token': '6LxfIufekoOMdeyQmTP5b2qmdhBODWZPmEOZWxPd'
+        };
+    </script>
+      <script>
+          var _hmt = _hmt || [];
+          (function() {
+              var hm = document.createElement("script");
+              hm.src = "//hm.baidu.com/hm.js?debc91213222aae0abfdb6176ec8d28a";
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(hm, s);
+          })();
+      </script>
+
+    <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/search.css">
+
+  </head>
+{%endblock%}
+
+{% block content %}
+<div class="container" >
+
+    <div class=" page-header" >
+        <h2><small>搜索：</small> <p> {{ search_condition }}</p></h2>
+
+    </div>
+
+                    <div class="tags">
+                            </div>
+
+
+                <div class="follow row">
+                 {% for User in users_list %}
+                <form method="POST" action="..." accept-charset="UTF-8" id="followFormMulti"><input name="_token" type="hidden" value="6LxfIufekoOMdeyQmTP5b2qmdhBODWZPmEOZWxPd">
+
+                    <div class="box col-md-3 col-sm-4 col-xs-6">
+                        <div class="card">
+                               <a class="name left" href="...">   <span>{{ User.username }}</span></a>
+                                                            <div class="form-group left">
+                                        <div class="btn-group" id="followGroup" style="display: none">
+                                        </div>
+
+                                                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                  {%endfor%}
+            </div>
+
+
+      <div class="row">
+          {% for Works in works_list %}
+        <form method="POST" action="http://www.cnu.cc/works/recommend" accept-charset="UTF-8" id="recommendForm" class="recommendForm"><input name="_token" type="hidden" value="6LxfIufekoOMdeyQmTP5b2qmdhBODWZPmEOZWxPd">
+            <div class="col-xs-6 col-sm-4 col-md-3 work-thumbnail">
+                              <a href="/works/{{ Works.id }}" class="workCover thumbnail" >
+                            <img src="{{ works_coverage_dict[Works.id] }}" alt="hhh"></a>
+                </a>
+            </div>
+        </form>
+          {%endfor%}
+    </div>
+
+    <div class="pager_box">
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block head %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script data-ad-client="ca-pub-4158482577294135" async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/main.css">
+        <script src="http://imgoss.cnu.cc/assets/scripts/lib/respond.min.js"></script>
+        <script src="http://imgoss.cnu.cc/assets/scripts/lib/html5shiv.min.js"></script>
+        <script>
+
+            Config = {
+                'cdnDomain': 'http://imgoss.cnu.cc',
+                'user_id': 1014245,
+                'routes': {},
+                'token': '8r60GFgSKWaCf1garoMiDPVZACD46s325D3hYnuU'
+            };
+        </script>
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?debc91213222aae0abfdb6176ec8d28a";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/selected.css">
+        <link rel="stylesheet" href="http://imgoss.cnu.cc/assets/styles/public.css">
+        <style>
+            .authorInfo .author {
+                display: block;
+                overflow: hidden;
+                height: 40px;
+            }
+        </style>
+
+        <style>
+            .carousel {
+                width: 1200px;
+                height: 400px;
+            }
+
+            img {
+                width: 1200px;
+                height: 400px;
+            }
+
+        </style>
+
+        <style type="text">
+            .ttpp {
+                font-size: 40px;
+            }
+        </style>
+
+        <script src="jquery.js"></script>
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        <script>
+            $('.carousel').carousel({
+                interval: 2000
+            })
+        </script>
+
+    </head>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+
+                <div id="carousel-example-generic" class="carousel slide center-block" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <a href=""></a>
+                            <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg" alt="">
+                            <div class="carousel-caption">
+                                <h3>姜大佬吵死</h3>
+                                <p>骚麻批</p>
+                            </div>
+                        </div>
+                        {% for works in works_list %}
+                            <div class="item">
+                                <a href="/works/{{ works.id }}" class="workCover thumbnail">
+                                    <img src="{{ works_coverage_dict[works.id] }}" alt="hhh"></a>
+                                <div>
+                                    <p> {{ works.description }} <br/></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="rows container pc">
+        <div class="col-lg-8 col-md-8 col-xs-12">
+            <h2 class="ulTitle">每日精选</h2>
+            <ul class="selectedUL pc" id="selected">
+
+                {% for works in works_list %}
+                    <div class="date">{{ works_post_time[works.id] }}</div>
+                    <hr>
+
+                    <li class="bannerLi " width="100%">
+                        <a href="/works/{{ works.id }}" class="workCover thumbnail">
+                            <img src="{{ works_coverage_dict[works.id] }}" alt="hhh"></a>
+                        <div class="workContent ">
+                            <a href href="/works/{{ works.id }}">
+                                <h3 class="workTitle">{{ works.title }}</h3>
+                            </a>
+
+                            <div class="caption">
+                                <p>作者：{{ works_editor_dict[works.id].username }}</p>
+                            </div>
+                            <div class="workBody"><p> {{ works.description }} <br/></p></div>
+                        </div>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}
+    <p>虎鲸摄影</p>
+{% endblock %}
